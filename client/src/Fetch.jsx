@@ -8,12 +8,15 @@ function Fetch() {
     request
       .get('/api')
       .then((response) => {
+        console.log(response)
         setResponse(response.body)
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.log('hello')
+      })
   }, [])
 
-  return <div>{response.message}</div>
+  return <div>{response?.message}</div>
 }
 
 export default Fetch
