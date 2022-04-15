@@ -18,16 +18,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "eslintConfig": {
-    "extends": "eda/react",
-    "ignorePatterns": [
-      "dist/*"
-    ]
-  },
   "dependencies": {
     "express": "^4.17.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0",
     "superagent": "^7.1.2"
   },
   "devDependencies": {

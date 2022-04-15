@@ -8,11 +8,10 @@ function Fetch() {
     request
       .get('/api')
       .then((response) => {
-        console.log(response)
         setResponse(response.body)
       })
       .catch((err) => {
-        console.log('hello')
+        console.log(err.message)
       })
   }, [])
 
