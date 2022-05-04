@@ -8,7 +8,6 @@ module.exports = {
     },
     useNullAsDefault: true,
   },
-
   test: {
     client: 'better-sqlite3',
     connection: {
@@ -22,7 +21,6 @@ module.exports = {
       directory: path.join(__dirname, 'migrations'),
     },
   },
-
   production: {
     client: 'postgresql',
     connection: {
