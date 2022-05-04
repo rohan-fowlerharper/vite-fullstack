@@ -4,7 +4,7 @@ import { Link, Routes, Route } from 'react-router-dom'
 import logo from './logo.svg'
 import './App.css'
 
-import Widgets from '@/pages/Widgets'
+import Widgets from './pages/Widgets'
 
 function App() {
   const [count, setCount] = useState(0)

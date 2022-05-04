@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import request from 'superagent'
 
-import Widget from '@/components/Widget'
+import Widget from '../components/Widget'
 
 function Widgets() {
   const [widgets, setWidgets] = useState([])
