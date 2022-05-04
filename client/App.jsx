@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, Routes, Route } from 'react-router-dom'
+import { Button, useToast } from '@chakra-ui/react'
 
 import logo from './logo.svg'
 import './App.css'
@@ -8,15 +9,30 @@ import Widgets from './pages/Widgets'
 
 function App() {
   const [count, setCount] = useState(0)
+  const toast = useToast()
   return (
     <div className='App'>
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <p>Hello Vite + React!</p>
         <p>
-          <button onClick={() => setCount((count) => count + 1)}>
+          <Button onClick={() => setCount((count) => count + 1)}>
             count is: {count}
-          </button>
+          </Button>
+          {' | '}
+          <Button
+            onClick={() =>
+              toast({
+                title: 'Toasted!',
+                description: 'hot bread',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+              })
+            }
+          >
+            Toast
+          </Button>
         </p>
 
         <Routes>
