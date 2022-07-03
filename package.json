@@ -44,7 +44,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
-    "superagent": "^7.1.2"
+    "superagent": "^7.1.2",
+    "vite": "^2.9.13"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.17.10",
@@ -66,7 +67,6 @@
     "react-redux": "^8.0.1",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
-    "supertest": "^6.2.3",
-    "vite": "^2.9.13"
+    "supertest": "^6.2.3"
   }
 }
