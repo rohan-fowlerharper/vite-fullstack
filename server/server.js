@@ -1,33 +1,32 @@
 const express = require('express')
 const path = require('path')
-const fs = require('fs')
+const { createServer: createViteServer } = require('vite')
 
-const server = express()
+const createServer = async function () {
+  const server = express()
 
-server.use(express.static(path.resolve(__dirname, '../dist')))
-server.use(express.json())
+  server.use(express.static(path.resolve(__dirname, '../dist')))
+  server.use(express.json())
 
-server.use('/api/widgets', require('./routes/widgets'))
+  const vite = await createViteServer({
+    server: { middlewareMode: 'html' },
+  })
 
-server.get('/api', (req, res) => {
-  res.json({ message: 'Hello World!' })
-})
+  server.use('/api/widgets', require('./routes/widgets'))
 
-server.get('*', (req, res) => {
-  try {
-    const html = fs.readFileSync(
-      path.resolve(__dirname, '../dist/index.html'),
-      'utf8'
-    )
-    res.send(html)
-  } catch (err) {
-    if (err.message.includes('no such file or directory')) {
-      return res
-        .status(404)
-        .send('dist folder not found, try running `npm run build`')
-    }
-    return res.status(500).send('something went wrong')
+  server.get('/api', (req, res) => {
+    res.json({ message: 'Hello World!' })
+  })
+
+  server.use(vite.middlewares)
+
+  if (process.env.NODE_ENV === 'production') {
+    server.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, '../dist/index.html'))
+    })
   }
-})
 
-module.exports = server
+  return server
+}
+
+module.exports = createServer
