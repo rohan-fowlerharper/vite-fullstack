@@ -1,8 +1,6 @@
 const express = require('express')
 const path = require('path')
 
-const { createServer: createViteServer } = require('vite')
-
 const createServer = async function () {
   const server = express()
 
@@ -16,6 +14,7 @@ const createServer = async function () {
   })
 
   if (process.env.NODE_ENV !== 'production') {
+    const { createServer: createViteServer } = require('vite')
     const vite = await createViteServer({
       server: { middlewareMode: 'html' },
     })
