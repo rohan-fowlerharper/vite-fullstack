@@ -8,9 +8,8 @@ server.use(express.static(path.resolve(__dirname, '../dist')))
 server.use(express.json())
 
 server.use('/api/widgets', require('./routes/widgets'))
-
-server.get('/api', (req, res) => {
-  res.json({ message: 'Hello World!' })
+server.use('/api/*', (req, res) => {
+  res.sendStatus(404)
 })
 
 server.get('*', (req, res) => {
